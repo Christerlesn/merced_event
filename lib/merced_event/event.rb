@@ -1,5 +1,5 @@
 class MercedEvent::Event
-  attr_accessor :title, :date, :time_start, :time_end, :url, :detail
+  attr_accessor :title, :date, :time_start, :time_end, :url
   @@current = []
 
   def initialize(title, date, time_start, time_end, url)
@@ -8,7 +8,6 @@ class MercedEvent::Event
     @time_start = time_start
     @time_end = time_end
     @url = url
-    @detail = []
     save
   end
 

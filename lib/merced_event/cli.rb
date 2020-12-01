@@ -25,11 +25,11 @@ class MercedEvent::CLI
   end
   
   def menu
-    input = nil 
-    until input == "exit"
+    input = "" 
+    while input != "exit"
         puts "Please enter the number on the list corresponding to the event to see more. To see all, type 'all'. To exit, type 'exit'."
         input = gets.strip.downcase
-        if input.to_i > 0
+        if input.to_i > 0 
           event_detail = @events[input.to_i-1]
           puts "TITLE:#{event_detail.title}
           DATE: #{event_detail.date} 
