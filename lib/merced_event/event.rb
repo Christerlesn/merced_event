@@ -1,47 +1,31 @@
 class MercedEvent::Event
-  attr_accessor :title, :date, :time_start, :time_end, :time, :part_url, :url
-  
-  # def initialize
-  #   new_event = MercedEvent::Scraper.scrape_events
-    
-  # end
-    
-  def self.events
-    all_events = []
-  
-    all_events << MercedEvent::Scraper.scrape_1
-    all_events << MercedEvent::Scraper.scrape_2
-    all_events
+  attr_accessor :title, :date, :time_start, :time_end, :url, :detail
+  @@current = []
+
+  def initialize(title, date, time_start, time_end, url)
+    @title = title
+    @date = date
+    @time_start = time_start
+    @time_end = time_end
+    @url = url
+    @detail = []
+    save
   end
-  
-  # def self.scrape_1
-  #   doc = Nokogiri::HTML(open("https://www.mercedcountyevents.com/new-events"))
+
+  def self.events
+    MercedEvent::Scraper.scrape_events if @@current.empty?
+  end
+
+  def save
+    @@current << self
+  end
     
-  #     event = self.new
-  #     event.title = doc.search(".eventlist-title")[0].text
-  #     time_start = doc.search(".event-time-12hr-start")[0].text
-  #     time_end = doc.search(".event-time-12hr-end")[0].text
-  #     event.time = "Start time: #{time_start}. End time #{time_end}."
-  #     event.date = doc.search(".event-date")[0].text
-  #     part_url = doc.search(".eventlist-title-link")[0].attribute("href").value
-  #     event.url = "https://www.mercedcountyevents.com"<< part_url    
-      
-  #     event
-  # end
+  # def self.events
+  #   all_events = []
   
-  #   def self.scrape_2
-  #   doc = Nokogiri::HTML(open("https://www.mercedcountyevents.com/new-events"))
-    
-  #     event = self.new
-  #     event.title = doc.search(".eventlist-title")[1].text
-  #     # event.time_start = doc.search(".event-time-12hr-start")[1].text
-  #     # event.time_end = doc.search(".event-time-12hr-end")[1].text
-  #     # event.time = "Start time: #{time_start}. End time #{time_end}."
-  #     event.date = doc.search(".event-date")[1].text
-  #     part_url = doc.search(".eventlist-title-link")[1].attribute("href").value
-  #     event.url = "https://www.mercedcountyevents.com"<< part_url    
-      
-  #     event
+  #   all_events << MercedEvent::Scraper.scrape_1
+  #   all_events << MercedEvent::Scraper.scrape_2
+  #   all_events
   # end
   
 end
