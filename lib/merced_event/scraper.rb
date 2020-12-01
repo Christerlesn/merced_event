@@ -9,10 +9,12 @@ class MercedEvent::Scraper
       title = e.search(".eventlist-title").text
       time_start = e.search(".event-time-12hr-start").text
       time_end = e.search(".event-time-12hr-end").text
+      first_day = e.search(".event-date").first.text
+      final_day = e.search(".event-date").last.text
       date = e.search(".event-date").text
       part_url = e.search(".eventlist-title-link").attribute("href").value
       url = "https://www.mercedcountyevents.com"<< part_url
-      MercedEvent::Event.new(title, date, time_start, time_end, url)
+      MercedEvent::Event.new(title, first_day, final_day, time_start, time_end, url)
     end
   end
   

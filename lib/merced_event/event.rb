@@ -1,10 +1,11 @@
 class MercedEvent::Event
-  attr_accessor :title, :date, :time_start, :time_end, :url
+  attr_accessor :title, :first_day, :final_day, :time_start, :time_end, :url
   @@current = []
 
-  def initialize(title, date, time_start, time_end, url)
+  def initialize(title, first_day, final_day, time_start, time_end, url)
     @title = title
-    @date = date
+    @first_day = first_day
+    @final_day = final_day
     @time_start = time_start
     @time_end = time_end
     @url = url
