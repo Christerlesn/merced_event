@@ -1,16 +1,17 @@
 class MercedEvent::Event
   attr_accessor :title, :date, :time_start, :time_end, :time, :part_url, :url
   
-  def self.current
-    self.scraper
-  end
-  
-  def self.scraper
-    current_events = []
+  # def initialize
+  #   new_event = MercedEvent::Scraper.scrape_events
     
-    current_events << MercedEvent::Scraper.scrape_1
-    current_events << MercedEvent::Scraper.scrape_2
-    current_events
+  # end
+    
+  def self.events
+    all_events = []
+  
+    all_events << MercedEvent::Scraper.scrape_1
+    all_events << MercedEvent::Scraper.scrape_2
+    all_events
   end
   
   # def self.scrape_1

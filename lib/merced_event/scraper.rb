@@ -5,6 +5,8 @@ class MercedEvent::Scraper
 
   # end
 
+#Need to loop method scrape_1 & 2 and make into one method
+# the website itself shows events going to past events, so just show all.
   def self.scrape_1
     doc = Nokogiri::HTML(open("https://www.mercedcountyevents.com/new-events"))
     

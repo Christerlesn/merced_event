@@ -7,10 +7,10 @@ class MercedEvent::CLI
   end
   
   def list_titles
-    @events = MercedEvent::Event.current
-    puts "Upcoming events:"
+    @events = MercedEvent::Event.events
+    puts "Event Dates Update 2020:"
     @events.each.with_index(1) do |event, n|
-      puts "#{n}. #{event.title}"
+      puts "#{n}. #{event.date} : #{event.title}"
     end
   end
   
