@@ -1,3 +1,6 @@
 #!/usr/bin/env ruby
 
-puts "Testing to make sure this works"
+require "./lib/merced_event.rb"
+
+MercedEvent::CLI.new.call
+

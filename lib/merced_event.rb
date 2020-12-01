@@ -1,4 +1,5 @@
-require "merced_event/version"
+require_relative "merced_event/version"
+require "./lib/merced_event/cli"
 
 module MercedEvent
   class Error < StandardError; end
