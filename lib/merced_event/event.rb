@@ -1,19 +1,46 @@
 class MercedEvent::Event
-  attr_accessor :title, :date, :time, :url
+  attr_accessor :title, :date, :time_start, :time_end, :time, :part_url, :url
   
   def self.current
-    event_1 = self.new 
-    event_1.title = "UC MERCED UPSTART PRESENTS A FREE ONLINE CONCERT WITH SALLYSWAG."
-    event_1.date = "MONDAY, DECEMBER 7, 2020."
-    event_1.time = "12:00 PM - 1:00 PM"
-    event_1.url ="fakeurlfornow.com"
-    
-    event_2 = self.new 
-    event_2.title = "AMA WITH REBECCA RYALS, PHD. WORLD SOIL DAY IS 12/5. IN CELEBRATION, PLEASE JOIN US ON MONDAY, 12/7 FOR A SPECIAL AMA WITH SOIL HEALTH EXPERT, REBECCA RYALS, PHD!"
-    event_2.date ="MONDAY, DECEMBER 7, 2020"
-    event_2.time = "2:00 PM - 3:00 PM"
-    event_2.url = "theotherurl.com"
-    
-    [event_1, event_2]
+    self.scraper
   end
+  
+  def self.scraper
+    current_events = []
+    
+    current_events << self.scrape_1
+    current_events << self.scrape_2
+    current_events
+  end
+  
+  def self.scrape_1
+    doc = Nokogiri::HTML(open("https://www.mercedcountyevents.com/new-events"))
+    
+      event = self.new
+      event.title = doc.search(".eventlist-title")[0].text
+      event.time_start = doc.search(".event-time-12hr-start")[0].text
+      event.time_end = doc.search(".event-time-12hr-end")[0].text
+      event.time = "Start time: #{time_start}. End time #{time_end}."
+      event.date = doc.search(".event-date")[0].text
+      event.part_url = doc.search(".eventlist-title-link")[0].attribute("href").value
+      event.url = "https://www.mercedcountyevents.com"<< part_url    
+      
+      event
+  end
+  
+    def self.scrape_2
+    doc = Nokogiri::HTML(open("https://www.mercedcountyevents.com/new-events"))
+    
+      event = self.new
+      event.title = doc.search(".eventlist-title")[1].text
+      event.time_start = doc.search(".event-time-12hr-start")[1].text
+      event.time_end = doc.search(".event-time-12hr-end")[1].text
+      event.time = "Start time: #{time_start}. End time #{time_end}."
+      event.date = doc.search(".event-date")[1].text
+      event.part_url = doc.search(".eventlist-title-link")[1].attribute("href").value
+      event.url = "https://www.mercedcountyevents.com"<< part_url    
+      
+      event
+  end
+  
 end

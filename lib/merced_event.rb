@@ -1,3 +1,5 @@
+require "open-uri"
+require "nokogiri"
 require_relative "merced_event/version"
 require "./lib/merced_event/event"
 require "./lib/merced_event/cli"
