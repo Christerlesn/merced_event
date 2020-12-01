@@ -4,7 +4,6 @@ class MercedEvent::CLI
     get_info
     list_titles
     menu
-    goodbye
   end
   
   def get_info
@@ -29,19 +28,18 @@ class MercedEvent::CLI
     while input != "exit"
         puts "Please enter the number on the list corresponding to the event to see more. To see all, type 'all'. To exit, type 'exit'."
         input = gets.strip.downcase
-        if input.to_i > 0 
+        if input.to_i <= @events.size
           event_detail = @events[input.to_i-1]
           puts "TITLE:#{event_detail.title}
           DATE: #{event_detail.date} 
-          Starts at: #{event_detail.time_start}
-          Ends at: #{event_detail.time_end}
+          TIME: #{event_detail.time_start} - #{event_detail.time_end}
           For more information, go to: #{event_detail.url}"
         elsif input == "all"
           all_events
         else
-          puts "Unclear data provided. Please try again."
         end
       end
+      goodbye
     end
     
     def goodbye
