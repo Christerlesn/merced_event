@@ -1,0 +1,7 @@
+class MercedEvent::Scrapper
+  
+  
+  
+  
+  
+end

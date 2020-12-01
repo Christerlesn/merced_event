@@ -18,11 +18,11 @@ class MercedEvent::Event
     
       event = self.new
       event.title = doc.search(".eventlist-title")[0].text
-      event.time_start = doc.search(".event-time-12hr-start")[0].text
-      event.time_end = doc.search(".event-time-12hr-end")[0].text
+      time_start = doc.search(".event-time-12hr-start")[0].text
+      time_end = doc.search(".event-time-12hr-end")[0].text
       event.time = "Start time: #{time_start}. End time #{time_end}."
       event.date = doc.search(".event-date")[0].text
-      event.part_url = doc.search(".eventlist-title-link")[0].attribute("href").value
+      part_url = doc.search(".eventlist-title-link")[0].attribute("href").value
       event.url = "https://www.mercedcountyevents.com"<< part_url    
       
       event
@@ -33,11 +33,11 @@ class MercedEvent::Event
     
       event = self.new
       event.title = doc.search(".eventlist-title")[1].text
-      event.time_start = doc.search(".event-time-12hr-start")[1].text
-      event.time_end = doc.search(".event-time-12hr-end")[1].text
-      event.time = "Start time: #{time_start}. End time #{time_end}."
+      # event.time_start = doc.search(".event-time-12hr-start")[1].text
+      # event.time_end = doc.search(".event-time-12hr-end")[1].text
+      # event.time = "Start time: #{time_start}. End time #{time_end}."
       event.date = doc.search(".event-date")[1].text
-      event.part_url = doc.search(".eventlist-title-link")[1].attribute("href").value
+      part_url = doc.search(".eventlist-title-link")[1].attribute("href").value
       event.url = "https://www.mercedcountyevents.com"<< part_url    
       
       event
