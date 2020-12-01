@@ -7,3 +7,12 @@ How to build a CLI Gem according to Avi
 6. Start making things real
 7. Discover objects
 8. Program
+9. 
+
+
+
+What's needed for Current Events
+1. title
+2. date
+3. time
+4. url
