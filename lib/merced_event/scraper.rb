@@ -8,7 +8,7 @@ class MercedEvent::Scraper
     event_info.map do |e|
       title = e.search(".eventlist-title").text
       time_start = e.search(".event-time-12hr-start").text
-      time_end = e.search(".event-time-12hr-end").text
+      time_end = e.search(".event-time-12hr-end").text.split(" ").first
       first_day = e.search(".event-date").first.text
       final_day = e.search(".event-date").last.text
       date = e.search(".event-date").text
