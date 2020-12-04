@@ -12,7 +12,7 @@ class MercedEvent::CLI
   end
   
   def list_titles
-    puts "Event Dates Update 2020:"
+    puts "Events Update 2020:"
     @events.each.with_index(1) do |event, n|
       puts "#{n}. #{event.title}"
     end
