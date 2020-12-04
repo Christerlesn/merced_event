@@ -20,7 +20,7 @@ class MercedEvent::CLI
   
   def all_events
     @events.each.with_index(1) do |event, n|
-      puts " #{n}. Title:#{event.title} - Date: #{event.first_day} at:#{event.time_start} - #{event.final_day} #{event.time_end} - For more information, go to: #{event.url}"
+      puts " #{n}. Title:#{event.title} - Date: #{event.first_day} #{event.time_start} - #{event.final_day} #{event.time_end}. For more information, go to: #{event.url}"
     end
   end
   
@@ -33,10 +33,9 @@ class MercedEvent::CLI
         if input == "all"
           all_events
         elsif input != "exit" && input.to_i <= @events.size
-          event_detail = @events[input.to_i-1]
-          puts "Title:#{event_detail.title} -
-          Date: #{event_detail.first_day} #{event_detail.time_start} - #{event_detail.final_day} #{event_detail.time_end} 
-          For more information, go to: #{event_detail.url}"
+          puts "Title:#{@events[input.to_i-1].title} -
+          Date: #{@events[input.to_i-1].first_day} #{@events[input.to_i-1].time_start} - #{@events[input.to_i-1].final_day} #{@events[input.to_i-1].time_end} 
+          For more information, go to: #{@events[input.to_i-1].url}"
         else input != "all" || input != "exit"
         end
       end
