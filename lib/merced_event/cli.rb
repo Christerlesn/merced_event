@@ -32,11 +32,11 @@ class MercedEvent::CLI
         
         if input == "all"
           all_events
-        elsif input != "exit" && input.to_i <= @events.size
+        elsif input != "exit" && input.to_i > 0 && input.to_i <= @events.size
           puts "Title:#{@events[input.to_i-1].title} -
           Date: #{@events[input.to_i-1].first_day} #{@events[input.to_i-1].time_start} - #{@events[input.to_i-1].final_day} #{@events[input.to_i-1].time_end} 
           For more information, go to: #{@events[input.to_i-1].url}"
-        else input != "all" || input != "exit"
+        else
         end
       end
     end
